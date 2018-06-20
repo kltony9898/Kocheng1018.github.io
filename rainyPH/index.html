@@ -53,7 +53,7 @@
 
     function loop() { //持續取得值
         if(cpf){
-            temperature = cpf.get("d2");
+            temperature = cpf.get("a2");
             humidity = cpf.get("a1");
             //phVal = cpf.get("");
             rainyVal = cpf.get("a0");
@@ -70,7 +70,7 @@
     //cpf setup
     function setup(){
         if(cpf)
-            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 3, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
+            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 2, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
     } 
     
 </script>
