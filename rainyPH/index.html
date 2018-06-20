@@ -12,13 +12,13 @@
 
 <body>
     <div style="margin: 0 auto;">
-        <!-- <div class="fram">
-            <img class="imgset" src="img/PH.png">
-            PH值:
-            <span id="phVal">none</span>
+        <div class="fram">
+            <img class="imgset" src="img/temperature.png">
+            土壤溫度:
+            <span id="temperature">none</span>
             <br>
-        </div> -->
-        <p>
+        </div>
+        <p></p>
         <div class="fram">
             <img class="imgset" src="img/wet.png">
             土壤濕度:
@@ -27,45 +27,50 @@
         </div>
         <p>
         <!-- <div class="fram">
-            <img class="imgset" src="img/temperature.png">
-            土壤溫度:
-            <span id="temperature">none</span>
+            <img class="imgset" src="img/PH.png">
+            PH值:
+            <span id="phVal">none</span>
             <br>
         </div> -->
         <p>
+        <div class="fram">
+            <img class="imgset" src="img/rainy.jpg">
+            下雨檢測:
+            <span id="rainyVal">none</span>
+            <br>
+        </div>
     </div>
 </body>
 </html>
 
 <script>
     setup();
-    loop();
-
-    //var temperature; //溫度
+    
+    var temperature; //溫度
     var humidity;    //溼度
     //var phVal;       //PH值
     var rainyVal;    //雨水感測
 
-
-
     function loop() { //持續取得值
         if(cpf){
-            //temperature = cpf.get("d2");
+            temperature = cpf.get("d2");
             humidity = cpf.get("a1");
             //phVal = cpf.get("");
             rainyVal = cpf.get("a0");
-            //document.getElementById("temperature").innerHTML = temperature;
+
+            document.getElementById("temperature").innerHTML = temperature;
             document.getElementById("humidity").innerHTML = humidity;
             //document.getElementById("phVal").innerHTML = phVal;
-            //document.getElementById("rainyVal").innerHTML = rainyVal;
+            document.getElementById("rainyVal").innerHTML = rainyVal;
         }
-        setTimeout(loop, 2000);
+        setTimeout(loop, 1000);
     }
-    
+    loop();
+
     //cpf setup
     function setup(){
         if(cpf)
-            cpf.setPinMode('["resetPin"],  ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
-    } //["setPinMode", "digital", 2, "INPUT"],
+            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 3, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
+    } 
     
 </script>
