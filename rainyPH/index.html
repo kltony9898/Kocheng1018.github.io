@@ -11,9 +11,6 @@
 </head>
 
 <body>
-    <p></p>
-    <p></p>
-    <p></p>
     <div style="margin: 0 auto;">
         <div class="fram">
             <img class="imgset" src="img/temperature.png">
@@ -55,11 +52,10 @@
     //var phVal;       //PH值
     var rainyVal;    //雨水感測
 
-    function loop() { //持續取得值
+    //持續取得值
+    function loop() { 
         if(cpf){
-            temperature = cpf.get("a2");
-
-            //temperature = toCelsius(temp);
+            temperature = cpf.get("d8");
 
             humidity = cpf.get("a1");
             //phVal = cpf.get("");
@@ -74,18 +70,11 @@
     }
     loop();
 
-    // Temperature
-	function toCelsius(value) {
-		var resistance = parseFloat((1023-value) * 10000 / value);
-		var temperature = 1 / (Math.log(resistance / 10000) / 3975+1 / 298.15) - 273.15;
-		
-		return temperature.toFixed(2);
-	}
 
     //cpf setup
     function setup(){
         if(cpf)
-            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 2, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
+            cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 8, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
     } 
     
 </script>
