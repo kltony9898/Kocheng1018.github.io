@@ -1,0 +1,12 @@
+.imgset {
+    height: 30px;
+    width: 30px;
+    float: left;
+}
+.fram{
+    display: block;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	height: 120px;
+	margin: 0 auto;
+}
