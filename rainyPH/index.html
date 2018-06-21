@@ -46,20 +46,19 @@
 <script>
     setup();
     
-    var temperature; //溫度
+    var temperature = 1000; //溫度
     var temp;
     var humidity;    //溼度
     //var phVal;       //PH值
     var rainyVal;    //雨水感測
 
-    var humidity2;    //溼度
 
     //持續取得值
     function loop() { 
         if(cpf){
            // temperature = cpf.get("d8");
 
-            temperature =  cpf.get("DHT11","d8","dht11temp");
+            temperature = cpf.get("DHT11","d8","dht11temp");
             humidity2 = cpf.get("DHT11","d8","dht11humi");
 
             humidity = cpf.get("a1");
@@ -71,7 +70,6 @@
             //document.getElementById("phVal").innerHTML = phVal;
             document.getElementById("rainyVal").innerHTML = rainyVal;
 
-            document.getElementById("humidity2").innerHTML = humidity;
         }
         setTimeout(loop, 1000);
     }
