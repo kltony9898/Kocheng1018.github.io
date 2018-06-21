@@ -11,15 +11,14 @@
 </head>
 
 <body>
-    521
     21<br>
     21<br>
     21<br>
     <div style="margin: 0 auto;">
         <div class="fram">
             <img class="imgset" src="img/temperature.png">
-            土壤溫度:
-            <span id="temperature">none</span>
+            土壤PH值:
+            <span id="phVal">none</span>
             <br>
         </div>
         <p></p>
@@ -50,39 +49,42 @@
 <script>
     setup();
     
-    var temperature = 1000; //溫度
-    var temp;
+    var temperature; //溫度
     var humidity;    //溼度
-    //var phVal;       //PH值
+    var phVal;       //PH值
     var rainyVal;    //雨水感測
 
 
     //持續取得值
     function loop() { 
         if(cpf){
-           // temperature = cpf.get("d8");
+            
+            rainyVal = vout(cpf.get("a0"), 0, 1023, 0, 5);
+            humidity = vout(cpf.get("a1"), 0, 1023, 0, 5);
+            phVal = (cpf.get("a2"))*0.01;
+            //temperature = cpf.get("");
+            //temperature = vout(temperature, 0, 1023, 0, 5);
 
-            temperature = cpf.get("a2");
-
-            humidity = cpf.get("a1");
-            //phVal = cpf.get("");
-            rainyVal = cpf.get("a0");
-
-            document.getElementById("temperature").innerHTML = temperature;
-            document.getElementById("humidity").innerHTML = humidity;
-            //document.getElementById("phVal").innerHTML = phVal;
             document.getElementById("rainyVal").innerHTML = rainyVal;
+            document.getElementById("humidity").innerHTML = humidity;
+            document.getElementById("phVal").innerHTML = phVal;
+            //document.getElementById("temperature").innerHTML = temperature;
 
         }
         setTimeout(loop, 1000);
     }
     loop();
 
+    //電壓換算公式
+    function vout(x, in_min, in_max, out_min, out_max){
+            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
 
     //cpf setup
     function setup(){
         if(cpf)
-            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 2, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
+            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 0, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 2, "INPUT"]')
     } 
     
 </script>
