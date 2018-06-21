@@ -66,12 +66,12 @@
             //phVal = cpf.get("");
             rainyVal = cpf.get("a0");
 
-            document.getElementById("temperature" + "DHT11的溫度").innerHTML = temperature;
+            document.getElementById("temperature").innerHTML = temperature;
             document.getElementById("humidity").innerHTML = humidity;
             //document.getElementById("phVal").innerHTML = phVal;
             document.getElementById("rainyVal").innerHTML = rainyVal;
 
-            document.getElementById("humidity2" + "DHT11的濕度").innerHTML = humidity;
+            document.getElementById("humidity2").innerHTML = humidity;
         }
         setTimeout(loop, 1000);
     }
