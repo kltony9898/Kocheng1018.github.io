@@ -58,8 +58,7 @@
         if(cpf){
            // temperature = cpf.get("d8");
 
-            temperature = cpf.get("DHT11","d8","dht11temp");
-            humidity2 = cpf.get("DHT11","d8","dht11humi");
+            temperature = cpf.get("a2");
 
             humidity = cpf.get("a1");
             //phVal = cpf.get("");
@@ -79,7 +78,7 @@
     //cpf setup
     function setup(){
         if(cpf)
-            cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 8, "DHT11"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
+            cpf.setPinMode('["resetPin"], ["setPinMode", "analog", 2, "INPUT"], ["setPinMode", "analog", 1, "INPUT"], ["setPinMode", "analog", 0, "INPUT"]')
     } 
     
 </script>
